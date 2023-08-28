@@ -1,0 +1,71 @@
+Hash map assingment
+
+
+import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Hashmap
+{
+    public static void main(String[] args)
+    {
+        LinkedHashMap<String,String> em=new LinkedHashMap<String,String>();
+        em.put("g@yahoo.com","g@123");
+        em.put("u@yahoo.com","u@123");
+        em.put("r@yahoo.com","r@123");
+        em.remove("r@yahoo.com");
+
+        System.out.println(em);
+        System.out.println(em.containsKey("r@yahoo.com"));
+        System.out.println(em.containsValue("u@123"));
+
+    }
+
+}
+
+class Address
+{
+    private String hno;
+    private String Street;
+    private String city;
+    private String state;
+    public Address(){}
+    public Address(String hno, String street, String city, String state)
+    {
+        this.hno=hno;
+        this.Street=street;
+        this.city=city;
+        this.state=state;
+
+    }
+    public String getHno() {return hno;}
+    public String getStreet() {return Street;}
+    public String getCity() {return city;}
+    public String getState() {return state;}
+    {
+
+
+    }
+
+}
+
+class Test21
+{
+    public static void main (String[] args)
+    {
+        HashMap<Employee,Address>map=new HashMap<>();
+        map.put(new Employee(101,"Ajay",1000,10),new Address("1-2","MG Street","Bangalore","Karnatka"));
+        map.put(new Employee(102,"Vijay",2000,20),new Address("1-3","Mr Street","Chennai","TN"));
+        map.put(new Employee(103,"Ajith",3000,30),new Address("1-4","Mt Street","Hyderabad","Telangana"));
+        map.put(new Employee(104,"Vikram",4000,40),new Address("1-5","MY Street","Munnar","Kerala"));
+        Set<Entry<Employee,Address>> eSet=map.entrySet();
+        for (Entry<Employee,Address> e:eSet);
+        {
+            System.out.println(e.getKey());
+            System.out.println(e.getValue());
+            System.out.println();
+        }
+    }
+}
