@@ -77,7 +77,7 @@ class Transaction extends bankAccount{
             System.out.println("Your current account balance after debit "+getBalance());
         }
         else
-            throw new InsufficientBalanceException("insufficient");
+            throw new InsufficientBalanceException(5000,"insufficient");
 
     }
 }
