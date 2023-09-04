@@ -12,7 +12,6 @@ public class Assignment {
         while (true){
             System.out.println("1. Add Employee details");
             System.out.println("2. Display all Employee Details");
-            System.out.println("3. Display Employee Details by employee id");
             System.out.println("4. Modify Employee Details by employee id");
             System.out.println("5. Delete Employee Details by employee id");
             System.out.println("6. Exit");
@@ -133,4 +132,97 @@ class Employee {
         return managerName;
     }
 }
+
+
+//DAO Employee
+
+package com.Aug29;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+
+public class EmployeeDAO {
+    private static String url = "jdbc:mysql://localhost:3306/Guru1";
+
+    public Employee getEmployeeByEmployeeId(int empid) {
+        Employee emp = null;
+        try (Connection con = DriverManager.getConnection(url, "root", "G@1nsight");
+             PreparedStatement pst = con.prepareStatement("select * from employee where emp_no = ?")) {
+            pst.setInt(1,empid);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next())
+                emp = new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return emp;
+
+    }
+
+    public ArrayList<Employee> getAllEmployees() {
+        ArrayList<Employee> elist = new ArrayList<>();
+        try (Connection con = DriverManager.getConnection(url, "root", "G@1nsight");
+             PreparedStatement pst = con.prepareStatement("select * from employee ")) {
+            ResultSet rs = pst.executeQuery();
+            while (rs.next())
+                elist.add(new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5)));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return elist;
+
+    }
+
+    public boolean addEmployee(Employee emp) {
+        int count = 0;
+        try (Connection con = DriverManager.getConnection(url, "root", "G@1nsight");
+             PreparedStatement pst = con.prepareStatement("insert into employee values (?,?,?,?,?)")) {
+            pst.setInt(1, emp.getEmpid());
+            pst.setString(2, emp.getEname());
+            pst.setDouble(3, emp.getSalary());
+            pst.setString(4, emp.getDepartmentName());
+            pst.setString(5, emp.getManagerName());
+            count = pst.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return count == 1;
+
+    }
+
+    public boolean modifyEmployee(Employee emp) {
+        int count = 0;
+        try (Connection con = DriverManager.getConnection(url, "root", "G@1nsight");
+             PreparedStatement pst = con.prepareStatement("update employee set emp_sal = ? , department = ? ,manager_name = ? where emp_no = ? ")) {
+            pst.setDouble(1, emp.getSalary());
+            pst.setString(2, emp.getDepartmentName());
+            pst.setString(3, emp.getManagerName());
+            pst.setInt(4, emp.getEmpid());
+
+
+            count = pst.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return count == 1;
+    }
+    public boolean deleteEmployeeByEmployeeId(int empid) {
+        int count = 0;
+        try (Connection con = DriverManager.getConnection(url, "root", "G@1nsight");
+             PreparedStatement pst = con.prepareStatement("delete from employee where emp_no = ?")) {
+            pst.setInt(1,empid);
+            count = pst.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return count == 1;
+    }
+}
+
 
