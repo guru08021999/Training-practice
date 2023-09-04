@@ -1,0 +1,43 @@
+Html3
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th> 
+            <th>Qualifications</th>
+            <th>Year</th>
+          </tr>
+          <tr>
+            <td>Naruto</td>
+            <td>Uzumaki</td>
+            <td>B.com</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Sasuke</td>
+            <td>Uchicha</td>
+            <td>CA</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Hinata</td>
+            <td>Haruno</td>
+            <td>MBA<.com</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Sakura</td>
+            <td>nara</td>
+            <td>ACCA</td>
+            <td>4</td>
+          </tr>
+    </table>
+</body>
+</html>
