@@ -1,0 +1,136 @@
+package com.Aug29;
+
+import java.util.Scanner;
+
+public class DAOAssignment {
+}
+public class Assignment {
+    public static void main(String[] args) {
+        Company c = new Company();
+        Scanner sc = new Scanner(System.in);
+        boolean flag = false;
+        while (true){
+            System.out.println("1. Add Employee details");
+            System.out.println("2. Display all Employee Details");
+            System.out.println("3. Display Employee Details by employee id");
+            System.out.println("4. Modify Employee Details by employee id");
+            System.out.println("5. Delete Employee Details by employee id");
+            System.out.println("6. Exit");
+            int key = sc.nextInt();
+            switch (key){
+                case 1:
+
+                    System.out.println("Enter employee id");
+                    int empid = sc.nextInt();
+                    System.out.println("Enter employee name");
+                    String ename = sc.next();
+                    System.out.println("Enter employee salary");
+                    double salary = sc.nextDouble();
+                    System.out.println("Enter employee department");
+                    String departmentName = sc.next();
+                    System.out.println("Enter employee manager");
+                    String managerName = sc.next();
+                    Employee e = new Employee(empid,ename,salary,departmentName,managerName);
+                    c.addEmployeeDetails(e);
+                    break;
+                case 2:
+                    c.displayAllEmployeeDetails();
+                    break;
+                case 3:
+                    c.displayEmployeeDetailsById(sc.nextInt());
+                    break;
+                case 4:
+                    System.out.println("Enter employee id");
+                    empid = sc.nextInt();
+                    System.out.println("Enter employee salary");
+                    salary = sc.nextDouble();
+                    System.out.println("Enter employee department");
+                    departmentName = sc.next();
+                    System.out.println("Enter employee manager");
+                    managerName=sc.next();
+                    Employee e1 = new Employee(empid,"",salary,departmentName,managerName);
+                    c.modifyEmployeeDetails(e1);
+                    break;
+                case 5:
+                    System.out.println("Enter employee id");
+                    c.deleteEmployeeDetails(sc.nextInt());
+                    break;
+                default:
+                    flag = true;
+
+            }
+            if(flag==true)
+                break;
+        }
+
+
+    }
+}
+
+
+
+//Employee class
+
+package com.Aug29;
+
+import java.util.ArrayList;
+
+class Employee {
+    private int empid;
+    private String ename;
+    private double salary;
+    private String departmentName;
+    private String managerName;
+
+    public Employee() {
+    }
+
+    public Employee(int empid, String ename, double salary, String departmentName, String managerName) {
+        this.empid = empid;
+        this.ename = ename;
+        this.salary = salary;
+        this.departmentName = departmentName;
+        this.managerName = managerName;
+    }
+
+    public void setEmpid(int empid) {
+        this.empid = empid;
+    }
+
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public int getEmpid() {
+        return empid;
+    }
+
+    public String getEname() {
+        return ename;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+}
+
