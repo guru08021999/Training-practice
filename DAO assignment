@@ -18,7 +18,7 @@ public class Assignment {
             System.out.println("6. Exit");
             int key = sc.nextInt();
             switch (key){
-                case 1:
+
 
                     System.out.println("Enter employee id");
                     int empid = sc.nextInt();
@@ -33,13 +33,13 @@ public class Assignment {
                     Employee e = new Employee(empid,ename,salary,departmentName,managerName);
                     c.addEmployeeDetails(e);
                     break;
-                case 2:
+
                     c.displayAllEmployeeDetails();
                     break;
-                case 3:
+                
                     c.displayEmployeeDetailsById(sc.nextInt());
                     break;
-                case 4:
+                
                     System.out.println("Enter employee id");
                     empid = sc.nextInt();
                     System.out.println("Enter employee salary");
@@ -51,7 +51,7 @@ public class Assignment {
                     Employee e1 = new Employee(empid,"",salary,departmentName,managerName);
                     c.modifyEmployeeDetails(e1);
                     break;
-                case 5:
+                
                     System.out.println("Enter employee id");
                     c.deleteEmployeeDetails(sc.nextInt());
                     break;
