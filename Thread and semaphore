@@ -1,0 +1,89 @@
+package com.gainsight2;
+import java.util.concurrent.Semaphore;
+
+class Account{
+    private int accNo;
+    private double balance;
+    public  Account(){}
+    public Account(int accNo,double balance){
+        this.accNo = accNo;
+        this.balance = balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public int getAccNo() {
+        return accNo;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+class Transaction{
+    Semaphore findBalance = new Semaphore(0);
+    Semaphore modifyBalance = new Semaphore(1);
+    public  void transact(Account acc, double amt,char ttype){
+        try{
+            modifyBalance.acquire();
+        }
+        catch (InterruptedException ex){
+            ex.printStackTrace();
+        }
+        if (ttype == 'D' || ttype == 'd')
+            acc.setBalance(acc.getBalance()+amt);
+        else if (ttype == 'W' || ttype =='w') {
+            acc.setBalance(acc.getBalance()-amt);
+        }
+        findBalance.release();
+
+    }
+    public void checkBalance(Account acc){
+        try {
+            findBalance.acquire();
+        }
+        catch (InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
+        System.out.println(acc.getBalance());
+        modifyBalance.release();
+    }
+
+
+}
+class ModifyBalanceThread implements Runnable{
+    Account acc;
+    double amt;
+    Thread t;
+    Transaction transaction;
+    public ModifyBalanceThread(Account acc,Transaction transaction,double amt){
+        this.acc = acc;
+        this.transaction  = transaction;
+        this.amt = amt;
+        t = new Thread(this);
+        t.start();
+    }
+    public void run(){
+        transaction.transact(acc,amt,'D');
+        System.out.println(acc.getAccNo()+" Balance is C H A N G E D"+acc.getBalance());
+    }
+}
+class FindBalanceThread implements Runnable{
+    Account acc;
+    Thread t;
+    Transaction transaction;
+    public FindBalanceThread(Account acc,Transaction transaction){
+        this.acc = acc;
+        this.transaction  = transaction;
+        t = new Thread(this);
+        t.start();
+    }
+    public void run(){
+        transaction.checkBalance(acc);
+        System.out.println(acc.getBalance()+" R E A D A B L E");
+    }
+}
+
