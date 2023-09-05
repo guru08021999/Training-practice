@@ -1,0 +1,111 @@
+Java training
+
+https://gainsight.zoom.us/j/99523398506?pwd=dDM0clBKTW9BaWVnMDN1WHBwWk5sdz09
+
+
+SQL
+	Download sql>open terminal>export PATH=${PATH}:/usr/local/mysql/bin/>mysql -u root -p>enter lap password>mysql database opened
+	To create data base - create name(name for database) database;
+	create table heading and data type
+	To get description of table - desc table
+	To delete table - drop table name
+	To save - commit
+	To leave - exit
+
+
+
+
+Method overloading
+	Method overloading is a concept in which you can define multiple methods in a class with the same name but different parameter lists.
+
+Static and non static 
+	A static method is a class method and belongs to the class itself. This means you do not need an instance(declared in a class outside of any method) in order to use a static method. A non-static method is an instance method and belongs to each object that is generated from the class.
+
+Inheritance
+	allows you to create a new class (subclass ) that inherits properties and behaviours from an existing class (superclass or base class). The inheritance relationship is represented using the "extends" keyword. But private cannot be inherited.
+
+Interface is a reference type which cannot have own implementation.
+
+Collection
+	Collection is an object, it regroups multiple into single element.
+
+List
+	List refers to a data structure used to store and manage a collection of elements.
+
+Array List
+	Array is an object which contains elements of a similar data type.
+	It is one of the most commonly used list in Java. 
+
+	ArrayList<String>slist=new ArrayList<>();    //creates an ArrayList of capacity
+	System.out.println(slist.size()); // to know the count
+	System.out.println("is Hello Removed"+slist.remove("Hello"));// to remove
+
+	ListIterator<String>itr=slist.listIterator();
+	while(itr.hasNext())
+  	 System.out.println(itr.next()); //top to bottom
+
+	while(itr.hasPrevious())
+        System.out.println(itr.previous()); //bottom to top
+
+Linked List
+	A linked list is a dynamic data structure whose size increases as you add the elements and decreases as you remove the elements from the list.
+		syntax - List<String> linkedList = new LinkedList<>();
+				
+
+Hashmap
+	Hashmap implements the Map interface. It is used to store key-value pairs, where each key is associated with a unique value.
+	basic operations like inserting, retrieving, and deleting key-value pairs.
+		syntax= Map<Integer, String> hashMap = new HashMap<>();
+
+Lamda Expression
+	It is a way to represent a function that doesn't have a name and can be used as a parameter or argument for methods or functions
+	syntax - (parameters) -> expression or block of code
+	->: The arrow token separates the parameter list from the body of the lambda expression.
+	 If the lambda consists of a single expression, you can use it directly. If the lambda has multiple statements, you enclose them in curly braces {}.
+
+Interface
+	An interface is a blueprint for a class that defines a set of methods .
+	It provide a way to achieve abstraction and define a contract for classes that implement them.	
+	Basically it helps to create well-structured and modular code.
+
+Stream
+	Stream is a highest level read only wrapper around the aggregate data. 
+	It is used to fetch the data from collection, array, files and it can read only from group of element.
+	syntax - List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+			.filter(n -> n % 2 == 0)
+			.mapToInt(Integer::intValue)
+                	.sum();
+	It is created from a list of integers, filtered to keep only even numbers, mapped to primitive int values, and then reduced to calculate their sum.
+
+Nested class
+	It  is a class that is defined within another class.
+	Also it allows you to create classes within classes for various purposes, such as encapsulation, organization, and scoping.
+	It is also called as inner class.
+
+Thread
+	Thread is the path followed while executing the program concurrently
+	It allows a program to operate more efficiently by doing multiple things at the same time.
+	Thread is a piece of code execute a task in a separate channel.
+
+JDBC-Java Data Base Connectivity
+	It is a standard or specialisation to connect and communicate Java application with backend data source.
+	Drivers is the one used to translates or converts mysql database to java database.
+	In Java we used DAO to manage the data access.
+		To confirm the Url - private static String url="jdbc:mysql;//localhost:3306/Guru1";
+		To perform the action - try(Connection con = DriverManager.getConnection(url,"root”,”password);
+		To modify - PreparedStatement pst= con.prepareStatement("insert into (created table name) values()
+		To delete - PreparedStatement pst= con.prepareStatement(“delete into (created table name) values()
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
