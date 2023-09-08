@@ -1,0 +1,62 @@
+
+public class Flight {
+	
+	private String flighItd;
+	private String source;
+	private String Destination;
+	private Double fare;
+	private int seatsAvailable;
+	
+	Flight(){}
+
+	public Flight(String flighId, String source, String destination, Double fare, int seatsAvailable) {
+		super();
+		this.flighId = flighId;
+		this.source = source;
+		Destination = destination;
+		this.fare = fare;
+		this.seatsAvailable = seatsAvailable;
+	}
+
+	public String getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(String flighId) {
+		this.flighItd = flighId;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getDestination() {
+		return Destination;
+	}
+
+	public void setDestination(String destination) {
+		Destination = destination;
+	}
+
+	public Double getFare() {
+		return fare;
+	}
+
+	public void setFare(Double fare) {
+		this.fare = fare;
+	}
+
+	public int getSeatsAvailable() {
+		return seatsAvailable;
+	}
+
+	public void setSeatsAvailable(int seatsAvailable) {
+		this.seatsAvailable = seatsAvailable;
+	}
+	
+
+}
