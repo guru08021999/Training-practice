@@ -1,0 +1,52 @@
+import java.util.Date;
+
+public class Bookings {
+	private int bookingId;
+	private String flightId;
+	private String passengerId;
+	private Date travelDate;
+	
+	Bookings(){}
+
+	public Bookings(int bookingId, String flightId, String passengerId, Date travelDate) {
+		super();
+		this.bookingId = bookingId;
+		this.flightId = flightId;
+		this.passengerId = passengerId;
+		this.travelDate = travelDate;
+	}
+
+	public int getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
+
+	public String getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(String flightId) {
+		this.flightId = flightId;
+	}
+
+	public String getPassengerId() {
+		return passengerId;
+	}
+
+	public void setPassengerId(String passengerId) {
+		this.passengerId = passengerId;
+	}
+
+	public Date getTravelDate() {
+		return travelDate;
+	}
+
+	public void setTravelDate(Date travelDate) {
+		this.travelDate = travelDate;
+	}
+	
+
+}
