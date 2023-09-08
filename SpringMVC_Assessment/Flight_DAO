@@ -1,0 +1,54 @@
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.gainsight.mvc.Entity.Flight;
+import com.gainsight.mvc.Entity.User;
+
+@Repository
+public class FlightDao {
+	private static String url="jdbc:mysql://localhost:3306/Practice;
+	Connection con=null;
+	PreparedStatement pst=null;
+	ResultSet rs=null;
+	
+	int count=0;
+	public ArrayList<Flight> availableFlights(){
+		
+	        ArrayList<Flight> flightList = new ArrayList<>();
+	        try (Connection con = DriverManager.getConnection(url, "root", “G@1nsight”);
+	             PreparedStatement pst = con.prepareStatement("select * from flight")) {
+	            ResultSet rs = pst.executeQuery();
+	            while (rs.next())
+	                flightList.add(new Flight(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4),rs.getInt(5)));
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	        return flightList;
+	    }
+	
+	public ArrayList<Flight> getFlightsBySourceAndDestination(String source, String destination) {
+		
+		  ArrayList<Flight> flightList = new ArrayList<>();
+	        try (Connection con = DriverManager.getConnection(url, "root", “G@1nsight”);
+	             PreparedStatement pst = con.prepareStatement("select * from flight where source=? and destination=?")) {
+	        	pst.setString(1, source);
+				pst.setString(2, destination);
+				rs= pst.executeQuery();
+	        	ResultSet rs = pst.executeQuery();
+	            while (rs.next())
+	                flightList.add(new Flight(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4),rs.getInt(5)));
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	        return flightList;
+	}
+	
+}
