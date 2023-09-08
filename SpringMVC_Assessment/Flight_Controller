@@ -1,0 +1,33 @@
+package org.gainsight.Assessment_MVC.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.gainsight.mvc.Dao.FlightDao;
+import com.gainsight.mvc.Entity.Flight;
+
+@Controller
+public class FlightController {
+	
+	@Autowired
+  FlightDao flightDao;
+	
+	@GetMapping("/getFlights")
+	public String getFlights(@RequestParam String source,@RequestParam String destination,String username, Model model) 
+	
+	
+	{
+		ArrayList<Flight> flights = flightDao.getFlightsBySourceAndDestination(source,destination);
+		model.addAttribute("flights",flights);
+		return "FlightBooking";
+		
+	}
+
+
+}
