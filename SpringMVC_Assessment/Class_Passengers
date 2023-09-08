@@ -1,0 +1,60 @@
+public class Passengers {
+	private String passengersId;
+	private String firstName;
+	private String lastName;
+	private long mobile;
+	private String email;
+	
+	Passengers(){}
+
+	public Passengers(String passengersId, String firstName, String lastName, long mobile, String email) {
+		super();
+		this.passengersId = passengersId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobile = mobile;
+		this.email = email;
+	}
+
+	public String getPassengersId() {
+		return passengersId;
+	}
+
+	public void setPassengersId(String passengersId) {
+		this.passengersId = passengersId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public long getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+
+}
