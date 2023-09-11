@@ -1,7 +1,7 @@
 @Repository
 public class PassengerDAO {
 	
-	private static String url="jdbc:mysql://localhost:3306/gain";
+	private static String url="jdbc:mysql://localhost:3306/Practice";
 	public boolean addPassenegrDetails(String passengerId,String firstName,String lastName,long mobile,String email)
 	{
 		
@@ -11,7 +11,7 @@ public class PassengerDAO {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection(url,"root","Arpitak@10");
+			con=DriverManager.getConnection(url,"root","G@1nsight");
 			pst=con.prepareStatement("insert into passengers values(?,?,?,?,?)");
 			pst.setString(1, passengerId);
 			pst.setString(2, firstName);
