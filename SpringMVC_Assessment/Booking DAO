@@ -1,7 +1,7 @@
 @Repository
 public class BookingDAO {
 	
-	private static String url="jdbc:mysql://localhost:3306/gain";
+	private static String url="jdbc:mysql://localhost:3306/Practice";
 	public boolean addBookingDetails(String bookingId,String flightId,String passengerId,String travelDate)
 	{
 		
@@ -11,7 +11,7 @@ public class BookingDAO {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection(url,"root","Arpitak@10");
+			con=DriverManager.getConnection(url,"root","G@1nsight");
 			pst=con.prepareStatement("insert into Bookings values(?,?,?,?)");
 			pst.setString(1, bookingId);
 			pst.setString(2, flightId);
@@ -48,7 +48,7 @@ public class BookingDAO {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection(url,"root","Arpitak@10");
+			con=DriverManager.getConnection(url,"root","G@1nsight");
 			pst=con.prepareStatement("select * from bookings where booking_id=?");
 			pst.setString(1, bookingId);
 			rs=pst.executeQuery();
