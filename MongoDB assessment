@@ -1,0 +1,31 @@
+Employee collection
+
+1.demomongo> db.employee.insertOne({"ename":" John Smith","position":"Software Engineer"," dept":"Engineering","salary":85000,"Hire Date":"January 15, 2023"});
+
+2. demomongo> db.employee.updateMany({},{$set:{"salary":90000}});
+
+3. db.employees.find({$and:[{},{"salary":{$gt:80000}}]});
+
+ 4. db.employee.deleteOne({"dept":"Sales"});
+
+
+
+
+ Orders collection to aggregate sum
+
+5.  db.Orders.aggregate([{$match:{order_date:{$gte:new Date("2023-03-12"),$lte:new Date("2023-06-03")}}},{$group:{_id:null,totalRevenueAmount:{$sum:"$total_price"}}}]);
+
+
+
+
+
+
+product collect - index creation
+
+6. db.Products.createIndex({"product_code":1}); 
+
+
+
+
+
+
